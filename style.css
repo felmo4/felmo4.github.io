@@ -180,6 +180,11 @@ a:hover {
 	1% {filter: blur(1px)}
 }
 
+.footer img {
+    pointer-events: none;
+    -webkit-user-drag: none;
+}
+
 
 /* TAB CONTENTS
    ========================================================== */
@@ -201,9 +206,7 @@ a:hover {
 .app__title {
 	font-weight: 400;
 	position: relative;
-	font-size: 2.125rem;
 	text-shadow: 0 0 4px rgb(var(--color-primary));	
-	margin: 0 5px 5px;
 }
 
 /* -- shadow text */
@@ -254,9 +257,8 @@ a:hover {
 
 /* Slideshow */
 .mySlides {display: none}
-.mySlidesFilterist img {width: 390px; height: 280px}
-.mySlidesOhome img {width: 550px; height: 260px}
-.mySlidesLaundry img {width: 380px; height: 300px}
+.mySlidesOhome img{width: 400px}
+.mySlidesFilterist img, .mySlidesLaundry img {width: 320px}
 
 /* Slideshow container */
 .slideshow-container {
@@ -277,19 +279,8 @@ a:hover {
 .prev {	left: 0;}
 .next {  right: 0;}
 
-.filterist .next, .filterist .prev {
-	height: 280px;
-	padding: 140px 16px;
-}
-
 .ohome .next, .ohome .prev {
-	height: 260px;
-	padding: 130px 16px;
-}
-
-.laundry .next, .laundry .prev {
-	height: 300px;
-	padding: 150px 16px;
+	padding: 90px 16px;
 }
 
 /* The dots/bullets/indicators */
@@ -325,13 +316,27 @@ a:hover {
 
 .educlist {display: flex;}
 
-#scroll2, #scroll3, #scroll4 {opacity: 0.2;}
+.unscroll {opacity: 0.2;}
 
 .scroll {animation: scroll 1s forwards;}
 
 @keyframes scroll {
 	from {opacity: 0.2;} 
 	to {opacity: 1;}
+}
+
+#radio {cursor: pointer;}
+
+#quest {
+	max-height: 130px;
+	max-width: 450px;
+	overflow: auto;
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+}
+
+#tab3::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 /* FOOTER
@@ -390,30 +395,16 @@ a:hover {
    ========================================================== */
 
 /* On changing screens - *note descending */
-@media (max-width: 1075px) {
-	.mySlidesOhome img {width: 400px; height: 200px}
+
+@media (max-width: 1020px) {
+	#tab2 img {width: 290px	}
 	.ohome .next, .ohome .prev {
-		height: 200px;
-		padding: 90px 16px;
+		padding: 65px 30px;
 	}
 }
 
-@media (max-width: 950px) {
-	.mySlidesFilterist img {width: 290px;	height: 180px;}
-	.filterist .next, .filterist .prev {
-		height: 180px;
-		padding: 80px 16px;
-	}
-	.mySlidesLaundry img {width: 280px;	height: 230px;}
-	.laundry .next, .laundry .prev {
-		height: 230px;
-		padding: 105px 16px;
-	}
-}
-
-@media (max-width: 900px) {
-	.row.projects{flex-direction: column-reverse; }
-	.row.aboutme {flex-direction: column; }
+@media (max-width: 930px) {
+	.row.aboutme, .row.projects{flex-direction: column; }
 	#tab2, #tab3 {overflow-x: hidden; overflow-y: scroll; flex-direction: row; justify-content: center;}
 	#tab3 .app {margin: 5% 0; max-width: 550px;}
 	#me {height: 200px;}
@@ -422,13 +413,8 @@ a:hover {
 }
 
 @media (max-width: 650px) {
-	.mySlidesOhome img {width: 300px; height: 150px}
-	.ohome .next, .ohome .prev {
-		height: 150px;
-		padding: 65px 16px;
-	}
 	.dotOhome {margin: 0 -1px}
-	.app__title,.app__title.filterist {font-size: 1.25rem;}
+	.app__title {font-size: 1.25rem;}
 	.app__subtitle {font-size: 0.7rem;}
 	
 	.app__button span {
@@ -454,16 +440,15 @@ a:hover {
 	.app.margined .app__title {font-size: 1rem;}
 }
 
-@media (min-width: 901px) { 
+@media (min-width: 931px) { 
 	#tab2, #tab3 {overflow-x: scroll; overflow-y: hidden;}
-	#tab3 .app {width: 70%;}
 	#tab3 .app.margined {margin-left: 17%;}
-	.row.aboutme .text {border-left: 1px dashed rgb(var(--color-supplement-02));;}
+	#tab3 .app.marginedr {margin-right: 17%;}
+	.text {padding-left: 10px; border-left: 1px dashed rgb(var(--color-supplement-02));;}
 }
 @media (min-width: 651px) {
 	 .app__subtitle.shake {bottom: 100px;}
 	 .aboutme div .app__title {font-size: 1.7rem;}
-	 /* #tab2 {height: 450px;} */
 	}
 
 
@@ -566,8 +551,4 @@ a:hover {
 	from {opacity: 1} 
   	to {opacity: 0}
 }
-
-
-
-
 
